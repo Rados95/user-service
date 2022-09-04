@@ -13,11 +13,11 @@ RUN mvn clean package
 FROM eclipse-temurin@sha256:b58430116602b6ae7d6afa347138a7d74fad6629a0156d58e434e9881920f3ad
 LABEL "author"="rados" \
     "language"="java"
-RUN useradd -ms /bin/bash containermanager
-USER containermanager
 ENV APPDIR /usr/local/app
 RUN mkdir $APPDIR
 WORKDIR $APPDIR
 COPY --from=user-builder $APPDIR/target/user-service.jar $APPDIR
+RUN useradd -ms /bin/bash containermanager
+USER containermanager
 EXPOSE 8081
 CMD ["java", "-jar", "user-service.jar"]
