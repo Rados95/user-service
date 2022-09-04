@@ -3,8 +3,8 @@ spring:
     name: user-service
   datasource:
     url: jdbc:mysql://mysql:3306/master_database?createDatabaseIfNotExist=true
-    username: root
-    password: nemasifre
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: create
